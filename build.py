@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Packages the extension into dist/piskel-importer.aseprite-extension.
+"""Packages the extension into dist/piskel-to-aseprite-extension.aseprite-extension.
 
 An Aseprite extension is just a ZIP file renamed to .aseprite-extension with
 package.json and the Lua scripts at the root of the archive. There is nothing
@@ -10,7 +10,7 @@ import os
 import zipfile
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
-FILES = ["package.json", "piskel-importer.lua"]
+FILES = ["package.json", "piskel-to-aseprite-extension.lua"]
 
 
 def main():

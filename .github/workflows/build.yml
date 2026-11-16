@@ -1,0 +1,90 @@
+name: Build extension
+
+on:
+  push:
+    branches: [main, master]
+    tags: ["v*"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Install Lua (for the syntax check)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y lua5.4
+
+      - name: Check Lua syntax
+        run: luac5.4 -p piskel-importer.lua
+
+      - name: Read name and version from package.json
+        id: meta
+        run: |
+          python - <<'PY' >> "$GITHUB_OUTPUT"
+          import json
+          m = json.load(open("package.json", encoding="utf-8"))
+          print("name=" + m["name"])
+          print("version=" + m["version"])
+          PY
+
+      - name: Check that the tag matches the package.json version
+        if: startsWith(github.ref, 'refs/tags/v')
+        run: |
+          if [ "${GITHUB_REF_NAME}" != "v${{ steps.meta.outputs.version }}" ]; then
+            echo "Tag ${GITHUB_REF_NAME} does not match package.json version ${{ steps.meta.outputs.version }}"
+            exit 1
+          fi
+
+      - name: Build the .aseprite-extension
+        run: python build.py
+
+      - name: Verify the package contents
+        run: |
+          python - <<'PY'
+          import zipfile
+          z = zipfile.ZipFile("dist/${{ steps.meta.outputs.name }}.aseprite-extension")
+          assert z.testzip() is None
+          names = sorted(z.namelist())
+          assert names == ["package.json", "piskel-importer.lua"], names
+          print("OK:", names)
+          PY
+
+      - name: Upload the extension as an artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ steps.meta.outputs.name }}-${{ steps.meta.outputs.version }}
+          path: dist/*.aseprite-extension
+          if-no-files-found: error
+
+  release:
+    # Runs only when a tag like v1.4.0 is pushed
+    needs: build
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Download the built extension
+        uses: actions/download-artifact@v4
+        with:
+          path: dist
+          merge-multiple: true
+
+      - name: Publish a GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*.aseprite-extension
+          generate_release_notes: true

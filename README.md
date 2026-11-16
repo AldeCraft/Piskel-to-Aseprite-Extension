@@ -53,26 +53,26 @@ Pick one:
 | Windows (PowerShell) | `powershell -ExecutionPolicy Bypass -File build.ps1` |
 | Linux / macOS | `./build.sh` (needs `zip`) |
 
-The result is `dist/piskel-importer.aseprite-extension`.
+The result is `dist/piskel-to-aseprite-extension.aseprite-extension`.
 
-Manual alternative: select `package.json` and `piskel-importer.lua`, compress
+Manual alternative: select `package.json` and `piskel-to-aseprite-extension.lua`, compress
 them into a ZIP (the two files must be at the root of the ZIP, not inside a
-folder) and rename it to `piskel-importer.aseprite-extension`.
+folder) and rename it to `piskel-to-aseprite-extension.aseprite-extension`.
 
 ## Install
 
 1. Open Aseprite and go to *Edit > Preferences > Extensions > Add Extension*
    (or double-click the `.aseprite-extension` file).
-2. Pick `dist/piskel-importer.aseprite-extension` and restart Aseprite.
+2. Pick `dist/piskel-to-aseprite-extension.aseprite-extension` and restart Aseprite.
 
 ### Development install (no packaging)
 
-Copy this folder (with `package.json` and `piskel-importer.lua`) to the
+Copy this folder (with `package.json` and `piskel-to-aseprite-extension.lua`) to the
 extensions directory and restart Aseprite after each change:
 
-- Windows: `%APPDATA%\Aseprite\extensions\piskel-importer\`
-- macOS: `~/Library/Application Support/Aseprite/extensions/piskel-importer/`
-- Linux: `~/.config/aseprite/extensions/piskel-importer/`
+- Windows: `%APPDATA%\Aseprite\extensions\piskel-to-aseprite-extension\`
+- macOS: `~/Library/Application Support/Aseprite/extensions/piskel-to-aseprite-extension/`
+- Linux: `~/.config/aseprite/extensions/piskel-to-aseprite-extension/`
 
 Aseprite may ask for file access permission the first time (the script reads
 `.piskel` files and writes temporary PNGs to decode/encode layers).
@@ -107,7 +107,7 @@ still writes back to a `.piskel` that was opened from one.
 
 ## How it works
 
-`piskel-importer.lua` is a single script:
+`piskel-to-aseprite-extension.lua` is a single script:
 
 | Section | What it does |
 | --- | --- |
@@ -185,26 +185,26 @@ Elige una opción:
 | Windows (PowerShell) | `powershell -ExecutionPolicy Bypass -File build.ps1` |
 | Linux / macOS | `./build.sh` (necesita `zip`) |
 
-El resultado queda en `dist/piskel-importer.aseprite-extension`.
+El resultado queda en `dist/piskel-to-aseprite-extension.aseprite-extension`.
 
-Alternativa manual: selecciona `package.json` y `piskel-importer.lua`, comprímelos
+Alternativa manual: selecciona `package.json` y `piskel-to-aseprite-extension.lua`, comprímelos
 en un ZIP (los dos archivos deben quedar en la raíz del ZIP, no dentro de una
-carpeta) y renombra el ZIP a `piskel-importer.aseprite-extension`.
+carpeta) y renombra el ZIP a `piskel-to-aseprite-extension.aseprite-extension`.
 
 ## Instalar
 
 1. En Aseprite: *Edit > Preferences > Extensions > Add Extension* (o doble clic
    sobre el archivo `.aseprite-extension`).
-2. Elige `dist/piskel-importer.aseprite-extension` y reinicia Aseprite.
+2. Elige `dist/piskel-to-aseprite-extension.aseprite-extension` y reinicia Aseprite.
 
 ### Instalación para desarrollo (sin empaquetar)
 
-Copia esta carpeta (con `package.json` y `piskel-importer.lua`) al directorio de
+Copia esta carpeta (con `package.json` y `piskel-to-aseprite-extension.lua`) al directorio de
 extensiones y reinicia Aseprite tras cada cambio:
 
-- Windows: `%APPDATA%\Aseprite\extensions\piskel-importer\`
-- macOS: `~/Library/Application Support/Aseprite/extensions/piskel-importer/`
-- Linux: `~/.config/aseprite/extensions/piskel-importer/`
+- Windows: `%APPDATA%\Aseprite\extensions\piskel-to-aseprite-extension\`
+- macOS: `~/Library/Application Support/Aseprite/extensions/piskel-to-aseprite-extension/`
+- Linux: `~/.config/aseprite/extensions/piskel-to-aseprite-extension/`
 
 La primera vez Aseprite puede pedir permiso de acceso a archivos (el script lee
 los `.piskel` y escribe PNG temporales para decodificar o codificar las capas).
@@ -241,7 +241,7 @@ Con *Save As* desactivado se usa el diálogo nativo de Aseprite (sin `.piskel`);
 
 ## Cómo funciona
 
-`piskel-importer.lua` es un solo script:
+`piskel-to-aseprite-extension.lua` es un solo script:
 
 | Sección | Qué hace |
 | --- | --- |

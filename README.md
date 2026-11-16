@@ -1,7 +1,8 @@
 <div align="center">
-<img src="./piskeltoaseprite_500.png" width="200">
+<img src="./piskeltoaseprite_banner_onlylogo.png" width="500">
   
 </div>
+
 
 # Piskel To Aseprite
 

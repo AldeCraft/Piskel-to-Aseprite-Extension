@@ -123,8 +123,8 @@ package contents and uploads it as a build artifact. Pushing a tag such as
 Release with the `.aseprite-extension` attached:
 
 ```
-git tag v1.4.0
-git push origin v1.4.0
+git tag v1.0.0
+git push origin v1.0.0
 ```
 
 ## License
@@ -258,8 +258,8 @@ contenido del paquete y lo sube como artefacto. Si subes una etiqueta como
 Release de GitHub con el `.aseprite-extension` adjunto:
 
 ```
-git tag v1.4.0
-git push origin v1.4.0
+git tag v1.0.0
+git push origin v1.0.0
 ```
 
 ## Licencia

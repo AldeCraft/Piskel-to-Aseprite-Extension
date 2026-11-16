@@ -70,7 +70,7 @@ jobs:
           if-no-files-found: error
 
   release:
-    # Runs only when a tag like v1.4.0 is pushed
+    # Runs only when a tag like v1.0.0 is pushed
     needs: build
     if: startsWith(github.ref, 'refs/tags/v')
     runs-on: ubuntu-latest

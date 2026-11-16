@@ -2,7 +2,7 @@
   "name": "piskel-to-aseprite-extension",
   "displayName": "Piskel to Aseprite Extension",
   "description": "Open and save Piskel (.piskel) files directly in Aseprite: layers, frames, opacity, FPS and palette.",
-  "version": "1.4.0",
+  "version": "1.0.0",
   "author": {
     "name": "Piskel to Aseprite contributors"
   },

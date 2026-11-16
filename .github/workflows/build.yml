@@ -58,7 +58,7 @@ jobs:
           z = zipfile.ZipFile("dist/${{ steps.meta.outputs.name }}.aseprite-extension")
           assert z.testzip() is None
           names = sorted(z.namelist())
-          assert names == ["package.json", "piskel-importer.lua"], names
+          assert names == ["package.json", "piskel-to-aseprite-extension.lua"], names
           print("OK:", names)
           PY
 

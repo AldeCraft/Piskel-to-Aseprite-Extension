@@ -1,5 +1,5 @@
 <div align="center">
-<img src="./piskeltoaseprite.png" width="200">
+<img src="./piskeltoaseprite_500.png" width="50">
   
 </div>
 
